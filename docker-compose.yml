@@ -1,0 +1,21 @@
+services:
+  pdplcheck:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pdplcheck
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4199:4199"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4199
+      PDPLCHECK_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+      APP_ORIGIN: ${APP_ORIGIN:-}
+    volumes:
+      - pdplcheck_data:/app/data
+
+volumes:
+  pdplcheck_data:

@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root,
+[data-theme="alabaster-teal"] {
+  --bg-canvas: #FAF9F6;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #ECFDF5;
+  --bg-soft: rgba(15, 118, 110, 0.10);
+  --border-subtle: #D6E4E1;
+  --border-strong: #B6CEC9;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --accent-primary: #0F766E;
+  --accent-primary-hover: #0D5E58;
+  --accent-primary-fg: #FFFFFF;
+  --accent-gold: #B45309;
+  --accent-gold-soft: rgba(180, 83, 9, 0.12);
+  --accent-emerald: #047857;
+  --accent-emerald-fg: #FFFFFF;
+  --accent-emerald-soft: rgba(4, 120, 87, 0.11);
+  --accent-amber: #B45309;
+  --accent-amber-soft: rgba(180, 83, 9, 0.12);
+  --accent-crimson: #B91C1C;
+  --accent-crimson-fg: #FFFFFF;
+  --accent-crimson-soft: rgba(185, 28, 28, 0.10);
+  --shadow-card: 0 12px 30px -16px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="gulf-obsidian"] {
+  --bg-canvas: #0A0F14;
+  --bg-surface: #111820;
+  --bg-elevated: #17212B;
+  --bg-soft: rgba(45, 212, 191, 0.15);
+  --border-subtle: #20303E;
+  --border-strong: #2F4559;
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --accent-primary: #2DD4BF;
+  --accent-primary-hover: #5EEAD4;
+  --accent-primary-fg: #0A0F14;
+  --accent-gold: #F59E0B;
+  --accent-gold-soft: rgba(245, 158, 11, 0.16);
+  --accent-emerald: #34D399;
+  --accent-emerald-fg: #0A0F14;
+  --accent-emerald-soft: rgba(52, 211, 153, 0.16);
+  --accent-amber: #FBBF24;
+  --accent-amber-soft: rgba(251, 191, 36, 0.16);
+  --accent-crimson: #F87171;
+  --accent-crimson-fg: #0A0F14;
+  --accent-crimson-soft: rgba(248, 113, 113, 0.16);
+  --shadow-card: 0 16px 38px -16px rgba(0, 0, 0, 0.72);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: "IBM Plex Sans Arabic", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .pdpl-display {
+    font-family: "IBM Plex Sans Arabic", "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  .pdpl-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  .num-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pdpl-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-card);
+  }
+
+  .pdpl-input {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    border-radius: 0.65rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    width: 100%;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  .pdpl-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--bg-soft);
+  }
+
+  .pdpl-input:disabled {
+    opacity: 0.68;
+    cursor: not-allowed;
+    background-color: var(--bg-elevated);
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pdpl-card {
+    box-shadow: none !important;
+    border-color: #CBD5E1 !important;
+  }
+}
